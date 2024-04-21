@@ -1,5 +1,5 @@
 import { type Page, type Locator, Expect } from "@playwright/test";
-import homepage from "./homepage";
+import homepage from "../common/homepage";
 
 class LoginPage {
   readonly page: Page;
@@ -12,8 +12,8 @@ class LoginPage {
     logoutLink: () => this.page.locator("a.ico-logout"),
   };
 
-  constructor(page:Page) {
-	this.page = page;
+  constructor(page: Page) {
+    this.page = page;
   }
 
   async userLogin(email, password) {
@@ -28,7 +28,7 @@ class LoginPage {
   }
 
   async checkThatLogoutButtonShouldBeDisplayed() {
-	await this.expect(this.elements.logoutLink()).toBeVisible();
+    await this.expect(this.elements.logoutLink()).toBeVisible();
     return this;
   }
 

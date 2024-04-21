@@ -1,6 +1,6 @@
 import { type Page, type Browser, test, expect } from "@playwright/test";
-import HomePage from "../pages/homepage";
-import ContactUsPage from "../pages/contactUsPage";
+import HomePage from "../pages/common/homepage";
+import ContactUsPage from "../pages/common/contactUsPage";
 import UserFormData from "../utils/UserFormData";
 
 //AAA Pattern
@@ -13,7 +13,6 @@ const password = process.env.PASSWORD;
 const fullName = UserFormData.getFullName();
 const email = UserFormData.getEmail();
 const enquiry = UserFormData.getMessage();
-
 
 test.beforeAll(async ({ playwright }) => {
   test.skip(
@@ -48,9 +47,9 @@ test.afterEach(async ({ page }, testInfo) => {
   // clean up all the data we created for this test through API calls
 });
 
-test.describe('Validate Contact Us Page Functionality', () => {
-// test.describe.only('Validate Contact Us Page Functionality', () => {
-// test.describe.skip("Validate Contact Us Page Functionality", () => {
+test.describe("Validate Contact Us Page Functionality", () => {
+  // test.describe.only('Validate Contact Us Page Functionality', () => {
+  // test.describe.skip("Validate Contact Us Page Functionality", () => {
   test("It can contact website owner", async ({ page }) => {
     await test.step("Navigate to Contact us page", async () => {
       new HomePage(page).navigateToContactUsPage();
@@ -58,15 +57,19 @@ test.describe('Validate Contact Us Page Functionality', () => {
 
     await test.step("Fill the form", async () => {
       // ...
-      new ContactUsPage(page).fillContactInfoForm(fullName, email, enquiry);
+      await new ContactUsPage(page).fillContactInfoForm(
+        fullName,
+        email,
+        enquiry
+      );
     });
 
     await test.step("Submit the form and check the success message", async () => {
-        // ...
-        (await new ContactUsPage(page).clickOnSubmitButton()).checkThatSuccessMessageShouldBeDisplayed;
-      });
+      // ...
+      (await new ContactUsPage(page).clickOnSubmitButton())
+        .checkThatSuccessMessageShouldBeDisplayed;
+    });
 
     // ...
   });
-
 });

@@ -54,17 +54,17 @@ test.describe('Validate Search Functionality', () => {
 
   test("can search for products", async ({ page }) => {
     await test.step("Write a text in the search bar", async () => {
-      new SearchPage(page).productSearch("Apple");
+      await new SearchPage(page).productSearch("Apple");
     });
 
     await test.step("Open the product page", async () => {
       // ...
-      new SearchPage(page).openProductPage()
+      await new SearchPage(page).openProductPage()
     });
 
     await test.step("Check that product page should be opened successfully", async () => {
       // ...
-      new ProductDetailsPage(page).checkThatProductPageShouldBeDisplayed(ProductName);
+      await new ProductDetailsPage(page).checkThatProductPageShouldBeDisplayed(ProductName);
     });
 
     // ...

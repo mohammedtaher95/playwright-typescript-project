@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+const authHeader = 'Basic ' + btoa("admin:admin");
 
 /**
  * Read environment variables from file.
@@ -21,7 +22,12 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: "html",
+  reporter: [
+    ["list"],
+    ["html", { open: "always", outputFolder: "reports/playwright-report"}],
+    ["allure-playwright", { open: "always", outputFolder: "reports/allure-results"}],
+    ["json", { outputFile: "reports/json-report/test-results.json"}],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -31,12 +37,20 @@ export default defineConfig({
     trace: "on-first-retry",
     screenshot: "only-on-failure",
     headless: false,
-    // ignoreHTTPSErrors: true,
+    ignoreHTTPSErrors: true,
+    actionTimeout: 10000,
+    navigationTimeout: 10000,
+    bypassCSP: true,
+    javaScriptEnabled: true,
     // viewport: { width: 1280, height: 720 },
     // video: 'on-first-retry',
+    extraHTTPHeaders: {
+      Authorization: authHeader,
+    }
   },
 
   // timeout here is for actions, ex: click
+  globalTimeout: 200000,
   timeout: 200000, //https://playwright.dev/docs/test-timeouts
 
   // for expect, it has its own timeout
