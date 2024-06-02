@@ -1,64 +1,80 @@
-import {faker} from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
 
-class UserFormData {
-    fullName = faker.person.fullName();
-    email = faker.internet.email();
-    friendEmail = faker.internet.email();
-    firstName = faker.person.firstName();
-    message = faker.lorem.text();
-    lastName = faker.person.lastName();
-    oldPassword = faker.number.int(1000000000);
-    newPassword = faker.number.int(1000000000);
-    address = faker.address.streetAddress();
-    city = faker.address.city();
-    postalCode = faker.number.int(99999);
-    phoneNumber = faker.phone.number();
+export class UserFormData {
 
-  UserFormData() {
+  readonly fullName: string;
+  readonly email: string;
+  readonly friendEmail: string;
+  readonly firstName: string;
+  readonly message: string;
+  readonly lastName: string;
+  readonly oldPassword: number;
+  readonly newPassword: number;
+  readonly address: string;
+  readonly city: string;
+  readonly postalCode: number;
+  readonly phoneNumber: string;
+
+  constructor() {
+    this.fullName = faker.person.fullName();
+    this.email = faker.internet.email();
+    this.friendEmail = faker.internet.email();
+    this.firstName = faker.person.firstName();
+    this.message = faker.lorem.text();
+    this.lastName = faker.person.lastName();
+    this.oldPassword = faker.number.int(1000000000);
+    this.newPassword = faker.number.int(1000000000);
+    this.address = faker.address.streetAddress();
+    this.city = faker.address.city();
+    this.postalCode = faker.number.int(99999);
+    this.phoneNumber = faker.phone.number();
   }
 
-  getFullName() {
+  async getFullName() {
     return this.fullName;
   }
 
-  getFirstName() {
-    return faker.person.firstName();;
+  async getFirstName() {
+    return faker.person.firstName();
   }
 
-  getLastName() {
+  async getLastName() {
     return this.lastName;
   }
-  getOldPassword() {
+
+  async getOldPassword() {
     return this.oldPassword;
   }
-  getNewPassword() {
+
+  async getNewPassword() {
     return this.newPassword;
   }
 
-  getEmail() {
+  async getEmail() {
     return this.email;
   }
-  getFriendEmail() {
+
+  async getFriendEmail() {
     return this.friendEmail;
   }
-  getMessage() {
+
+  async getMessage() {
     return this.message;
   }
 
-  getAddress() {
+  async getAddress() {
     return this.address;
   }
 
-  getCity() {
+  async getCity() {
     return this.city;
   }
-  getPostalCode() {
+
+  async getPostalCode() {
     return this.postalCode;
   }
 
-  getPhoneNumber() {
+  async getPhoneNumber() {
     return this.phoneNumber;
   }
 }
-
-export default new UserFormData();

@@ -9,3 +9,7 @@ node_modules/
 /playwright/.cache/
 reports/
 allure-report/
+.yarnrc.yml
+.yarn/
+.pnp.cjs
+.pnp.loader.mjs

@@ -1,19 +1,12 @@
-import { type Page, type Locator, Expect } from "@playwright/test";
-import contactUs from "./contactUsPage";
-import loginPage from "../user/loginPage";
-import myAccountPage from "../user/myAccountPage";
-import registrationPage from "../user/registrationPage";
+import { type Page, type Locator } from "@playwright/test";
 
-class HomePage {
+export class HomePage {
   readonly page: Page;
-  readonly expect: Expect;
-
-  elements = {
-    myAccountLink: () => this.page.locator("a.ico-account"),
-  };
+  readonly myAccountLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.myAccountLink = this.page.locator("a.ico-account");
   }
 
   async visit() {
@@ -23,25 +16,23 @@ class HomePage {
 
   async navigateToRegistrationPage() {
     await this.page.goto("/register");
-    return registrationPage;
+    return this;
   }
 
   async navigateToLoginPage() {
     await this.page.goto("/login");
-    return loginPage;
+    return this;
   }
 
   async navigateToMyAccountPage() {
     // this.elements.myAccountLink().click();
     await this.page.goto("/customer/info");
-    return myAccountPage;
-    //
+    return this;
   }
 
   async navigateToContactUsPage() {
     await this.page.goto("/contactus");
-    return contactUs;
+    return this;
   }
 }
 
-export default HomePage;

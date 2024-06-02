@@ -1,6 +1,7 @@
 # Playwright TS Automation Framework
 
 ## About:
+
 This is a demo-project for practising Playwright with Typescript for Automating Nopcommerce Website Test Cases.
 
 ## Prerequisites:
@@ -16,12 +17,14 @@ You need the following prerequisites installed on your device to be able to run 
 \*Note: Always make sure to download the latest stable version compatible with your OS and CPU architecture.
 
 ## Using this project
+
 1. Clone the project using Github Desktop OR run in terminal `git clone https://github.com/mohammedtaher95/playwright-typescript-project.git`.
 2. Ensure that you've installed the official Playwright VSCode plugin and ran `npm install` in the project root directory.
 3. Open the project folder in VS Code by clicking `File > Open Folder..`
 4. Jump to the [Test Execution and Reporting](#reporting) section to execute your code.
 
 ## <a name="reporting"></a>Test Execution and Reporting
+
 1. Follow this guide for [Running Tests](https://playwright.dev/docs/getting-started-vscode#running-tests).
 2. After Test Execution is completed, you will find all the execution reports under this directory `reports`.
 3. You can generate and serve a temporary allure report by opening a new terminal session in the project root directory [``` Terminal > New Terminal```] and running this command to generate the report `allure generate reports/allure-results -o allure-report --clean` and then this command to open the report `allure open allure-report`.

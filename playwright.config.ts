@@ -1,5 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
-const authHeader = 'Basic ' + btoa("admin:admin");
+const authHeader = "Basic " + btoa("admin:admin");
 
 /**
  * Read environment variables from file.
@@ -24,14 +24,17 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ["list"],
-    ["html", { open: "always", outputFolder: "reports/playwright-report"}],
-    ["allure-playwright", { open: "always", outputFolder: "reports/allure-results"}],
-    ["json", { outputFile: "reports/json-report/test-results.json"}],
+    ["html", { open: "always", outputFolder: "reports/playwright-report" }],
+    [
+      "allure-playwright",
+      { open: "always", outputFolder: "reports/allure-results" },
+    ],
+    ["json", { outputFile: "reports/json-report/test-results.json" }],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://demo.nopcommerce.com',
+    baseURL: "http://demo.nopcommerce.com",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
@@ -46,7 +49,7 @@ export default defineConfig({
     // video: 'on-first-retry',
     extraHTTPHeaders: {
       Authorization: authHeader,
-    }
+    },
   },
 
   // timeout here is for actions, ex: click
@@ -55,11 +58,11 @@ export default defineConfig({
 
   // for expect, it has its own timeout
   expect: {
-  /**
-   * Maximum time expect() should wait for the condition to be met.
-   * For example in `await expect(locator).toHaveText();`
-   */
-  timeout: 200000,
+    /**
+     * Maximum time expect() should wait for the condition to be met.
+     * For example in `await expect(locator).toHaveText();`
+     */
+    timeout: 200000,
   },
 
   /* Configure projects for major browsers */

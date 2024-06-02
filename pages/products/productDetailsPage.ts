@@ -1,37 +1,36 @@
-import { type Page, type Locator, Expect } from "@playwright/test";
+import { type Page, type Locator, expect } from "@playwright/test";
 
-class ProductDetailsPage {
-
+export class ProductDetailsPage {
   readonly page: Page;
-  readonly expect: Expect;
+  readonly productNameBreadCrumb: Locator;
+  readonly emailButton: Locator;
+  readonly productPriceLabel: Locator;
+  readonly reviewHyperlink: Locator;
 
-  elements = {
-    productNameBreadCrumb: () => this.page.locator("strong.current-item"),
-    emailButton: () => this.page.locator("button.button-2.email-a-friend-button"),
-    productPriceLabel: () => this.page.locator("#price-value-4"),
-    reviewHyperlink: () => this.page.locator("xpath=(//a[@href='/productreviews/4'])[2]")
-  };
-
-  constructor(page:Page){
+  constructor(page: Page) {
     this.page = page;
+    this.productNameBreadCrumb = this.page.locator("strong.current-item");
+    this.emailButton = this.page.locator("button.button-2.email-a-friend-button");
+    this.productPriceLabel = this.page.locator("#price-value-4");
+    this.reviewHyperlink = this.page.locator("xpath=(//a[@href='/productreviews/4'])[2]");
   }
 
-  async checkThatProductPageShouldBeDisplayed(productName) {
-    await this.expect(this.elements.productNameBreadCrumb()).toContainText(productName);
+  async checkThatProductPageShouldBeDisplayed(productName: string) {
+    await expect(this.productNameBreadCrumb).toContainText(
+      productName,
+    );
     return this;
   }
 
   async emailFriend() {
-    await this.elements.emailButton().click();
+    await this.emailButton.click();
   }
 
   async addReview() {
-    await this.elements.reviewHyperlink().click();
+    await this.reviewHyperlink.click();
   }
 
-  async checkCurrency(currency) {
-    await this.expect(this.elements.productPriceLabel()).toContainText(currency);
+  async checkCurrency(currency: string) {
+    await expect(this.productPriceLabel).toContainText(currency);
   }
 }
-
-export default ProductDetailsPage;

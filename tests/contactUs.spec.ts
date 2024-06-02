@@ -1,24 +1,25 @@
-import { type Page, type Browser, test, expect } from "@playwright/test";
-import HomePage from "../pages/common/homepage";
-import ContactUsPage from "../pages/common/contactUsPage";
-import UserFormData from "../utils/UserFormData";
+import { test } from "@playwright/test";
+import { HomePage } from "../pages/common/homepage";
+import { ContactUsPage } from "../pages/common/contactUsPage";
+import { UserFormData } from "../utils/UserFormData";
 
-//AAA Pattern
+// AAA Pattern
 
 // [Arrange]
 // [Act]
 // [Assert]
 
-const password = process.env.PASSWORD;
-const fullName = UserFormData.getFullName();
-const email = UserFormData.getEmail();
-const enquiry = UserFormData.getMessage();
+// const password = process.env.PASSWORD;
+
+let userFormData: UserFormData;
+let homepage: HomePage;
+let contactUsPage: ContactUsPage;
 
 test.beforeAll(async ({ playwright }) => {
-  test.skip(
-    !!process.env.PROD,
-    "Test intentionally skipped in production due to data dependency."
-  );
+  // test.skip(
+  //   !!process.env.PROD,
+  //   "Test intentionally skipped in production due to data dependency.",
+  // );
 
   // start a server
   // create a db connection
@@ -27,6 +28,11 @@ test.beforeAll(async ({ playwright }) => {
 
 test.beforeEach(async ({ page }, testInfo) => {
   console.log(`Running ${testInfo.title}`);
+
+  userFormData = new UserFormData();
+  homepage = new HomePage(page);
+  contactUsPage = new ContactUsPage(page);
+
   // open a URL
   // clean up the DB
   // create a page object
@@ -51,23 +57,24 @@ test.describe("Validate Contact Us Page Functionality", () => {
   // test.describe.only('Validate Contact Us Page Functionality', () => {
   // test.describe.skip("Validate Contact Us Page Functionality", () => {
   test("It can contact website owner", async ({ page }) => {
+    
+    const fullName = userFormData.getFullName();
+    const email = userFormData.getEmail();
+    const enquiry = userFormData.getMessage();
+
     await test.step("Navigate to Contact us page", async () => {
-      new HomePage(page).navigateToContactUsPage();
+      await homepage.navigateToContactUsPage();
     });
 
     await test.step("Fill the form", async () => {
       // ...
-      await new ContactUsPage(page).fillContactInfoForm(
-        fullName,
-        email,
-        enquiry
-      );
+      await contactUsPage.fillContactInfoForm(fullName, email, enquiry);
     });
 
     await test.step("Submit the form and check the success message", async () => {
       // ...
-      (await new ContactUsPage(page).clickOnSubmitButton())
-        .checkThatSuccessMessageShouldBeDisplayed;
+      await contactUsPage.clickOnSubmitButton()
+      await contactUsPage.checkThatSuccessMessageShouldBeDisplayed();
     });
 
     // ...

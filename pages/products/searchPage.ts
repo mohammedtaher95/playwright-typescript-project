@@ -1,38 +1,34 @@
-import { type Page, type Locator, Expect } from "@playwright/test";
-import ProductDetailsPage from "./productDetailsPage";
+import { type Page, type Locator } from "@playwright/test";
 
-class SearchPage {
-  
+export class SearchPage {
   readonly page: Page;
-  readonly expect: Expect;
+  readonly searchField: Locator;
+  readonly searchButton: Locator;
+  readonly productResult: Locator;
+  readonly productList: Locator;
 
-  elements = {
-    searchField: () => this.page.locator("id=small-searchterms"),
-    searchButton: () => this.page.locator("button.button-1.search-box-button"),
-    productResult: () => this.page.locator("div.picture"),
-    productList: () => this.page.locator("id=ui-id-1"),
-  };
-
-  constructor (page: Page){
+  constructor(page: Page) {
     this.page = page;
+    this.searchField = this.page.locator("id=small-searchterms");
+    this.searchButton = this.page.locator("button.button-1.search-box-button");
+    this.productResult = this.page.locator("div.picture");
+    this.productList = this.page.locator("id=ui-id-1");
   }
 
-  async productSearch(productName) {
-    await this.elements.searchField().fill(productName);
-    await this.elements.searchButton().click();
+  async productSearch(productName: string) {
+    await this.searchField.fill(productName);
+    await this.searchButton.click();
     return this;
   }
 
   async openProductPage() {
-    await this.elements.productResult().first().click();
-    return new ProductDetailsPage(this.page);
+    await this.productResult.first().click();
+    return this;
   }
 
-  async productSearchUsingAutoSuggest(searchText) {
-    await this.elements.searchField().fill(searchText);
-    await this.elements.productList().first().click();
-    return new ProductDetailsPage(this.page);
+  async productSearchUsingAutoSuggest(searchText: string) {
+    await this.searchField.fill(searchText);
+    await this.productList.first().click();
+    return this;
   }
 }
-
-export default SearchPage;
