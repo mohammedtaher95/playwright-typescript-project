@@ -58,9 +58,9 @@ test.describe("Validate Contact Us Page Functionality", () => {
   // test.describe.skip("Validate Contact Us Page Functionality", () => {
   test("It can contact website owner", async ({ page }) => {
     
-    const fullName = userFormData.getFullName();
-    const email = userFormData.getEmail();
-    const enquiry = userFormData.getMessage();
+    const fullName = await userFormData.getFullName();
+    const email = await userFormData.getEmail();
+    const enquiry = await userFormData.getMessage();
 
     await test.step("Navigate to Contact us page", async () => {
       await homepage.navigateToContactUsPage();
