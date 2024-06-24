@@ -33,6 +33,7 @@ pipeline
                  stage('Clean Old Runs') {
                     steps {
                         script {
+                            
                                 if (isUnix()) {
                                 sh 'allure generate reports/allure-results -o allure-report --clean'
                                 } else {

@@ -437,6 +437,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"allure-commandline@npm:^2.29.0":
+  version: 2.29.0
+  resolution: "allure-commandline@npm:2.29.0"
+  bin:
+    allure: bin/allure
+  checksum: 10c0/18d3d42ad20dd5fb5fe253085836374bd7d2f37c195acedf545245eb8e51585641ad81e468b74b67a842cf767f59dadd7076b21c67548bcf4198c0312184f942
+  languageName: node
+  linkType: hard
+
 "allure-js-commons@npm:2.15.1":
   version: 2.15.1
   resolution: "allure-js-commons@npm:2.15.1"
@@ -2811,6 +2820,7 @@ __metadata:
     "@types/dotenv": "npm:^8.2.0"
     "@types/node": "npm:^20.13.0"
     "@typescript-eslint/eslint-plugin": "npm:^7.11.0"
+    allure-commandline: "npm:^2.29.0"
     allure-playwright: "npm:^2.15.1"
     dotenv: "npm:^16.4.5"
     env-cmd: "npm:^10.1.0"
