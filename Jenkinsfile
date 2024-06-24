@@ -17,9 +17,13 @@ pipeline
                                 if (isUnix()) {
                                 sh 'corepack enable'
                                 sh 'yarn install'
+                                sh 'yarn playwright install'
+                                sh 'yarn playwright install-deps'
                                 } else {
                                 bat('corepack enable')
                                 bat('yarn install')
+                                bat('yarn playwright install')
+                                bat('yarn playwright install-deps')
                                 }
                             
 
