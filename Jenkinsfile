@@ -49,7 +49,7 @@ pipeline
                         }
                     }
                  }
-                 stage('Run Tests') {
+                 stage('Results') {
                     steps {
                         script {
                             allure includeProperties: false, jdk: 'JAVA_HOME', results: [[path: 'reports/allure-results']]
