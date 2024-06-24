@@ -30,6 +30,16 @@ pipeline
                         }
                     }
                  }
+                 stage('Clean Old Runs') {
+                    steps {
+                        script {
+                                if (isUnix()) {
+                                sh 'allure generate reports/allure-results -o allure-report --clean'
+                                } else {
+                                bat('allure generate reports/allure-results -o allure-report --clean')
+                                }
+                        }
+                    }
 
                 stage('Run Tests') {
                     steps {
