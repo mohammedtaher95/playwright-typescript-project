@@ -24,6 +24,7 @@
     "@playwright/test": "^1.43.1",
     "@types/node": "^20.13.0",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
+    "allure-commandline": "^2.29.0",
     "allure-playwright": "^2.15.1",
     "eslint": "^9.4.0",
     "eslint-config-prettier": "^9.1.0",
@@ -41,7 +42,6 @@
   },
   "dependencies": {
     "@types/dotenv": "^8.2.0",
-    "allure-commandline": "^2.29.0",
     "dotenv": "^16.4.5",
     "env-cmd": "^10.1.0",
     "eslint-config-typescript": "^3.0.0",
