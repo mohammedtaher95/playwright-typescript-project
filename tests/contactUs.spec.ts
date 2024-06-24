@@ -20,7 +20,6 @@ test.beforeAll(async ({ playwright }) => {
   //   !!process.env.PROD,
   //   "Test intentionally skipped in production due to data dependency.",
   // );
-
   // start a server
   // create a db connection
   // reuse a sign in state
@@ -57,7 +56,6 @@ test.describe("Validate Contact Us Page Functionality", () => {
   // test.describe.only('Validate Contact Us Page Functionality', () => {
   // test.describe.skip("Validate Contact Us Page Functionality", () => {
   test("It can contact website owner", async ({ page }) => {
-    
     const fullName = await userFormData.getFullName();
     const email = await userFormData.getEmail();
     const enquiry = await userFormData.getMessage();
@@ -73,7 +71,7 @@ test.describe("Validate Contact Us Page Functionality", () => {
 
     await test.step("Submit the form and check the success message", async () => {
       // ...
-      await contactUsPage.clickOnSubmitButton()
+      await contactUsPage.clickOnSubmitButton();
       await contactUsPage.checkThatSuccessMessageShouldBeDisplayed();
     });
 

@@ -12,7 +12,6 @@ export class RegistrationPage {
   readonly successMessage: Locator;
   readonly continueBtn: Locator;
 
-
   constructor(page: Page) {
     this.page = page;
     this.genderMaleRadioBtn = this.page.locator("#gender-male");
@@ -31,7 +30,12 @@ export class RegistrationPage {
     return this;
   }
 
-  async fillUserRegistrationForm(firstName: string, lastName: string, email: string, password: string) {
+  async fillUserRegistrationForm(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+  ) {
     await this.genderMaleRadioBtn.click();
     await this.firstName.fill(firstName);
     await this.lastName.fill(lastName);

@@ -31,7 +31,9 @@ export class ContactUsPage {
   }
 
   async checkThatSuccessMessageShouldBeDisplayed() {
-    await expect(this.successMessage).toHaveText("Your enquiry has been successfully sent to the store owner.");
+    await expect(this.successMessage).toHaveText(
+      "Your enquiry has been successfully sent to the store owner.",
+    );
     return this;
   }
 }

@@ -10,15 +10,17 @@ export class ProductDetailsPage {
   constructor(page: Page) {
     this.page = page;
     this.productNameBreadCrumb = this.page.locator("strong.current-item");
-    this.emailButton = this.page.locator("button.button-2.email-a-friend-button");
+    this.emailButton = this.page.locator(
+      "button.button-2.email-a-friend-button",
+    );
     this.productPriceLabel = this.page.locator("#price-value-4");
-    this.reviewHyperlink = this.page.locator("xpath=(//a[@href='/productreviews/4'])[2]");
+    this.reviewHyperlink = this.page.locator(
+      "xpath=(//a[@href='/productreviews/4'])[2]",
+    );
   }
 
   async checkThatProductPageShouldBeDisplayed(productName: string) {
-    await expect(this.productNameBreadCrumb).toContainText(
-      productName,
-    );
+    await expect(this.productNameBreadCrumb).toContainText(productName);
     return this;
   }
 

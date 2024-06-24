@@ -35,4 +35,3 @@ export class HomePage {
     return this;
   }
 }
-

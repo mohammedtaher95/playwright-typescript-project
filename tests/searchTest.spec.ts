@@ -20,7 +20,6 @@ test.beforeAll(async ({ playwright }) => {
   //   !!process.env.PROD,
   //   "Test intentionally skipped in production due to data dependency.",
   // );
-
   // start a server
   // create a db connection
   // reuse a sign in state
@@ -69,7 +68,9 @@ test.describe("Validate Search Functionality", () => {
 
     await test.step("Check that product page should be opened successfully", async () => {
       // ...
-      await productDetailsPage.checkThatProductPageShouldBeDisplayed(ProductName);
+      await productDetailsPage.checkThatProductPageShouldBeDisplayed(
+        ProductName,
+      );
     });
 
     // ...

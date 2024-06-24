@@ -12,15 +12,18 @@ export class MyAccountPage {
   readonly messageCloseBtn: Locator;
   readonly logoutLink: Locator;
 
-
   constructor(page: Page) {
     this.page = page;
-    this.changePasswordLink = this.page.locator("xpath=//a[@href='/customer/changepassword']");
+    this.changePasswordLink = this.page.locator(
+      "xpath=//a[@href='/customer/changepassword']",
+    );
     this.customerInfo = this.page.locator("xpath=//a[@href='/customer/info']");
     this.oldPasswordTxt = this.page.locator("#OldPassword");
     this.newPasswordTxt = this.page.locator("#NewPassword");
     this.confirmPasswordTxt = this.page.locator("#ConfirmNewPassword");
-    this.changePasswordBtn = this.page.locator("button.button-1.change-password-button");
+    this.changePasswordBtn = this.page.locator(
+      "button.button-1.change-password-button",
+    );
     this.changeResult = this.page.locator("p.content");
     this.messageCloseBtn = this.page.locator("span.close");
     this.logoutLink = this.page.locator("a.ico-logout");
@@ -44,7 +47,7 @@ export class MyAccountPage {
   }
 
   async checkThatChangeMessageShouldBeDisplayed() {
-    await expect(this.changeResult).toContainText("Password was changed",);
+    await expect(this.changeResult).toContainText("Password was changed");
     return this;
   }
 

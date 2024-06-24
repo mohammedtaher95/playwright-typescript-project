@@ -1,7 +1,6 @@
 import { faker } from "@faker-js/faker";
 
 export class UserFormData {
-
   readonly fullName: string;
   readonly email: string;
   readonly friendEmail: string;

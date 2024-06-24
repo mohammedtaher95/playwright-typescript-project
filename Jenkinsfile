@@ -10,6 +10,21 @@ pipeline
                     }
                 }
 
+                stage('Installing Dependencies') {
+                    steps {
+                        script {
+                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                                if (isUnix()) {
+                                sh 'corepack enable'
+                            } else {
+                                bat('corepack enable')
+                                
+                                }
+                            }
+
+                        }
+                    }
+                 }
 
                 stage('Run Tests') {
                     steps {
