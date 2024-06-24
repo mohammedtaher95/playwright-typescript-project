@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:e2e": "npx playwright test tests/",
-    "test:example": "npx playwright test tests-examples/",
-    "test:e2e:all": "npx playwright test --project=all-browsers-and-tests",
+    "test:e2e": "playwright test tests/",
+    "test:example": "playwright test tests-examples/",
+    "test:e2e:all": "playwright test --project=all-browsers-and-tests",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier . --check",
