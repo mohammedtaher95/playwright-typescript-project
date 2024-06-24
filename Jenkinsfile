@@ -49,6 +49,13 @@ pipeline
                         }
                     }
                  }
+                 stage('Run Tests') {
+                    steps {
+                        script {
+                            allure includeProperties: false, jdk: 'JAVA_HOME', results: [[path: 'reports/allure-results']]
+                        }
+                    }
+                 }
             }
         }
         
