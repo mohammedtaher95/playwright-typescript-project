@@ -34,7 +34,7 @@ pipeline
                 stage('Run Tests') {
                     steps {
                         script {
-                            try() {
+                            try {
                                 if (isUnix()) {
                                 sh 'yarn test:e2e'
                                 } else {
