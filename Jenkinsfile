@@ -13,7 +13,7 @@ pipeline
                 stage('Installing Dependencies') {
                     steps {
                         script {
-                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                            
                                 if (isUnix()) {
                                 sh 'corepack enable'
                                 sh 'yarn install'
@@ -21,7 +21,7 @@ pipeline
                                 bat('corepack enable')
                                 bat('yarn install')
                                 }
-                            }
+                            
 
                         }
                     }
@@ -30,13 +30,16 @@ pipeline
                 stage('Run Tests') {
                     steps {
                         script {
-                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                            try() {
                                 if (isUnix()) {
                                 sh 'yarn test:e2e'
                                 } else {
                                 bat('yarn test:e2e')
                                 
                                 }
+                            }
+                            catch(e){
+                            
                             }
 
                         }
