@@ -53,6 +53,14 @@ pipeline
                     steps {
                         script {
                             allure includeProperties: false, jdk: 'JAVA_HOME', results: [[path: 'reports/allure-results']]
+                            publishHTML(target: [
+                                allowMissing: false,
+                                alwaysLinkToLastBuild: true,
+                                keepAll: true,
+                                reportDir: 'playwright-report',
+                                reportFiles: 'index.html',
+                                reportName: 'Playwright Test Report'
+                            ])
                         }
                     }
                  }
