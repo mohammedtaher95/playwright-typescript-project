@@ -65,6 +65,7 @@ pipeline
                     steps {
                         script {
                             allure includeProperties: false, jdk: 'JAVA_HOME', results: [[path: 'reports/allure-results']]
+                            archiveArtifacts artifacts: 'reports/playwright-report/**/*', allowEmptyArchive: true
                             publishHTML(target: [
                                 allowMissing: false,
                                 alwaysLinkToLastBuild: true,
