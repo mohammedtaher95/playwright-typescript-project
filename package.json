@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:e2e": "playwright test tests/",
+    "test:e2e": "playwright test tests/ --project='chromium'",
     "test:example": "playwright test tests-examples/",
     "test:e2e:all": "playwright test --project=all-browsers-and-tests",
     "lint": "eslint .",
