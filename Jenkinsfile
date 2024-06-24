@@ -38,6 +38,7 @@ pipeline
                                 } else {
                                 bat('allure generate reports/allure-results -o allure-report --clean')
                                 }
+                            }    
                         }
                     }
 
