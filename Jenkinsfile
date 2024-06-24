@@ -64,11 +64,6 @@ pipeline
                  stage('Results') {
                     steps {
                         script {
-                            if (isUnix()) {
-                                sh 'allure generate reports/allure-results -o allure-report --clean'
-                                } else {
-                                bat('allure generate reports/allure-results -o allure-report --clean')
-                                }
                             allure includeProperties: false, jdk: 'JAVA_HOME', results: [[path: 'reports/allure-results']]
                             publishHTML(target: [
                                 allowMissing: false,
