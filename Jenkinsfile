@@ -16,9 +16,10 @@ pipeline
                             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                                 if (isUnix()) {
                                 sh 'corepack enable'
-                            } else {
+                                sh 'yarn install'
+                                } else {
                                 bat('corepack enable')
-                                
+                                bat('yarn install')
                                 }
                             }
 
@@ -32,7 +33,7 @@ pipeline
                             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                                 if (isUnix()) {
                                 sh 'yarn test:e2e'
-                            } else {
+                                } else {
                                 bat('yarn test:e2e')
                                 
                                 }
