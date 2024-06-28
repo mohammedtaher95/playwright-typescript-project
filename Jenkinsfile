@@ -51,6 +51,7 @@ pipeline
                                 sh 'yarn test:e2e'
                                 } else {
                                 bat('yarn test:e2e')
+                                bat('mv reports/playwright-report/index.html reports/playwright-report/index1.html')
                                 
                                 }
                             }
@@ -72,7 +73,7 @@ pipeline
                                 alwaysLinkToLastBuild: true,
                                 keepAll: true,
                                 reportDir: 'reports/playwright-report',
-                                reportFiles: 'index.html',
+                                reportFiles: 'index1.html',
                                 reportName: 'Playwright Test Report'
                             ])
                         }
