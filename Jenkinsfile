@@ -50,9 +50,7 @@ pipeline
                                 if (isUnix()) {
                                 sh 'yarn test:e2e'
                                 } else {
-                                bat('yarn test:e2e')
-                                bat('mv reports/playwright-report/index.html reports/playwright-report/index1.html')
-                                
+                                bat('yarn test:e2e')                                
                                 }
                             }
                             catch(e){
