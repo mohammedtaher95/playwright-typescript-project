@@ -66,7 +66,7 @@ pipeline
                         script {
                             allure includeProperties: false, jdk: 'JAVA_HOME', results: [[path: 'reports/allure-results']]
                             archiveArtifacts artifacts: 'reports/playwright-report/**/*', allowEmptyArchive: true
-                            bat('yarn playwright show-report')
+                            // bat('yarn playwright show-report')
                             publishHTML(target: [
                                 allowMissing: false,
                                 alwaysLinkToLastBuild: true,
