@@ -73,8 +73,9 @@ pipeline
                                 alwaysLinkToLastBuild: true,
                                 keepAll: true,
                                 reportDir: 'reports/playwright-report',
-                                reportFiles: 'index1.html',
-                                reportName: 'Playwright Test Report'
+                                reportFiles: 'index.html',
+                                reportName: 'Playwright Test Report',
+                                reportTitles: 'Regression'
                             ])
                         }
                     }
