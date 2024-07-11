@@ -79,6 +79,13 @@ pipeline
                     }
                  }
             }
+
+            post {
+                always {
+                    echo '######### Cleaning workspace #########'
+                    bat('git clean -fd')
+                }
+            }
         }
         
 
