@@ -63,7 +63,7 @@ pipeline
                  stage('Results') {
                     steps {
                         script {
-                            allure includeProperties: false, jdk: 'JAVA_HOME', results: [[path: 'reports/allure-results']]
+                            // allure includeProperties: false, jdk: 'JAVA_HOME', results: [[path: 'reports/allure-results']]
                             // archiveArtifacts artifacts: 'reports/playwright-report/**/*', allowEmptyArchive: true
                             // bat('yarn playwright show-report')
                             publishHTML(target: [
@@ -80,12 +80,12 @@ pipeline
                  }
             }
 
-            post {
-                always {
-                    echo '######### Cleaning workspace #########'
-                    bat('git clean -fd')
-                }
-            }
+            // post {
+            //     always {
+            //         echo '######### Cleaning workspace #########'
+            //         bat('git clean -fd')
+            //     }
+            // }
         }
         
 
