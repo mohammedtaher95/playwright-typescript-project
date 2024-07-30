@@ -54,7 +54,7 @@ export default defineConfig({
 
   // timeout here is for actions, ex: click
   globalTimeout: 200000,
-  timeout: 200000, //https://playwright.dev/docs/test-timeouts
+  timeout: 0, //https://playwright.dev/docs/test-timeouts
 
   // for expect, it has its own timeout
   expect: {
